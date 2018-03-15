@@ -1,5 +1,8 @@
 version: 2
 jobs:
+  dependencies:
+    pre:
+      - pip install PIL --allow-external PIL --allow-unverified PIL
   one:
     docker:
       - image: circleci/ruby:2.4.1
@@ -34,6 +37,7 @@ workflows:
   version: 2
   one_and_two:
     jobs:
+      - dependencies
       - one
       - two:
           requires:
