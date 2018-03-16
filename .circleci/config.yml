@@ -26,7 +26,7 @@ jobs:
       python:
         version: pypy-3.5.2
     steps:
-      - run: pip3 install PIL --upgrade pip3 PIL --allow-external PIL --allow-unverified PIL
+      - run: pip install PIL --upgrade pip PIL --allow-external PIL --allow-unverified PIL
       
 workflows:
   version: 2
