@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/flipp
+    working_directory: ~/HomePad
     docker:
       - image: circleci/android:api-26-node8-alpha
     steps:
@@ -23,15 +23,15 @@ jobs:
       - persist_to_workspace:
           root: ~/flipp
           paths:
-            - tmp/aws/
+            - NotePad/
   
   upload_to_AWS:
-    working_directory: ~/flipp
+    working_directory: ~/HomePad
     docker:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: ~/flipp
+          at: ~/HomePad
       - run:
           name: Install AWS CLI
           command: sudo apt-get -y -qq install awscli
