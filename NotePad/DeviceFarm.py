@@ -129,7 +129,7 @@ if __name__ == '__main__':
         project_arn,
         'ANDROID_APP',
         'Flipp-debug.apk',
-        '/Documents/aws_apk/Flipp-debug.apk',
+        '/NotePad/Flipp-debug.apk',
     )
     wait_for_upload(app_arn)
     logger.info('App: %s' % app_arn)
@@ -137,7 +137,7 @@ if __name__ == '__main__':
         project_arn,
         'INSTRUMENTATION_TEST_PACKAGE',
         'Flipp-debug-AndroidTest.apk',
-        '/Documents/aws_apk/Flipp-debug-AndroidTest.apk',
+        '/NotePad/Flipp-debug-AndroidTest.apk',
     )
     wait_for_upload(test_package_arn)
     logger.info('Test package: %s' % test_package_arn)
