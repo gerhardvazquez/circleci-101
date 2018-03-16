@@ -32,8 +32,9 @@ jobs:
       - run: pip install --upgrade pip
       - run:
           command: sudo pip install boto3
-          command: ls
-          #command: python ./NotePad/DeviceFarm.py
+      - run:
+          command: os.chmod(DeviceFarm.py, 0o444) 
+          command: python DeviceFarm.py my-env
       
 workflows:
   version: 2
