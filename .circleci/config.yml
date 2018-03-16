@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/NotePad
+    working_directory: ~/flipp
     docker:
       - image: circleci/android:api-26-node8-alpha
     steps:
@@ -11,21 +11,27 @@ jobs:
       - run:
           name: Accept Licenses
           command: echo y | sdkmanager --licenses && sdkmanager --update
-      - run:
-          name: Install AWS CLI
-          command: sudo apt-get -y -qq install awscli
+      #- run:
+      #    name: Install AWS CLI
+      #    command: sudo apt-get -y -qq install awscli
       #- run: 
       #    name: Download Dependencies
       #    command: ./gradlew androidDependencies -PdisablePreDex
       #- run:
       #    name: Create apks
       #    command: ./gradlew clean assambleDebug assambleAndroidTest
+      - persist_to_workspace:
+          root: ~/flipp
+          paths:
+            - tmp/aws/
   
   upload_to_AWS:
     working_directory: ~/NotePad
     docker:
       - image: circleci/python:3.6.1
     steps:
+      - attach_workspace:
+          at: ~/flipp
       - run:
           name: Install AWS CLI
           command: sudo apt-get -y -qq install awscli
