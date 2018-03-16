@@ -24,7 +24,7 @@ jobs:
   upload_to_AWS:
     machine:
       python:
-        version: pypy-3.4.4
+        version: pypy-3.5.2
     steps:
       - run: pip3 install PIL --upgrade pip3 PIL --allow-external PIL --allow-unverified PIL
       
