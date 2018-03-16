@@ -16,7 +16,7 @@ jobs:
       command: ./gradlew androidDependencies -PdisablePreDex
     - run:
       name: Create apks
-      command ./gradlew clean assambleDebug assambleAndroidTest
+      command: ./gradlew clean assambleDebug assambleAndroidTest
         
 workflows:
   version: 2
