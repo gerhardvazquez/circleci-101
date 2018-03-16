@@ -52,6 +52,8 @@ workflows:
               #We want to run this on every tag
               only: /.*/
       - upload_to_AWS:
+          requires:
+            - build
           filters:
             tags:
               #We want to run this on every tag
