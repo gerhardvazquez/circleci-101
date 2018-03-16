@@ -11,9 +11,9 @@ jobs:
       - run:
           name: Accept Licenses
           command: echo y | sdkmanager --licenses && sdkmanager --update
-      - run: 
-          name: Download Dependencies
-          command: ./gradlew androidDependencies -PdisablePreDex
+      #- run: 
+      #    name: Download Dependencies
+      #    command: ./gradlew androidDependencies -PdisablePreDex
       - run:
           name: Create apks
           command: ./gradlew clean assambleDebug assambleAndroidTest
