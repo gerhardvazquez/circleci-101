@@ -45,7 +45,7 @@ jobs:
       - run:
           command: ls
       - run:
-          command: notePad
+          command: cd notePad
       - run:
           command: ls
           #command: os.chmod(DeviceFarm.py, 0o444) 
