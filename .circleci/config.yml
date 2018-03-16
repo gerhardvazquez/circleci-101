@@ -11,12 +11,15 @@ jobs:
       - run:
           name: Accept Licenses
           command: echo y | sdkmanager --licenses && sdkmanager --update
+      - run:
+          name: Install AWS CLI
+          command: sudo apt-get -y -qq install awscli
       #- run: 
       #    name: Download Dependencies
       #    command: ./gradlew androidDependencies -PdisablePreDex
-      - run:
-          name: Create apks
-          command: ./gradlew clean assambleDebug assambleAndroidTest
+      #- run:
+      #    name: Create apks
+      #    command: ./gradlew clean assambleDebug assambleAndroidTest
 
 workflows:
   version: 2
