@@ -22,11 +22,10 @@ jobs:
       #    command: ./gradlew clean assambleDebug assambleAndroidTest
   
   upload_to_AWS:
-    machine:
-      python:
-        version: pypy-3.5.2
+    docker:
+      - image: circleci/python:3.6.1
     steps:
-      - run: pip install PIL --upgrade pip PIL
+      - run: pip install --upgrade pip
       
 workflows:
   version: 2
