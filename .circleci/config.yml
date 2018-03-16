@@ -31,7 +31,7 @@ jobs:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: ~/notePad
+          at: tmp/notePad
       - run:
           name: Install AWS CLI
           command: sudo apt-get -y -qq install awscli
