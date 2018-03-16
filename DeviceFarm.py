@@ -10,7 +10,7 @@ import requests
 REGION = 'us-west-2'
 PROJECT_NAME = 'CI_Farm_Test'
 DEVICE_POOL_NAME = 'Ci_Android_Pool'  # this is a default pool
-RUN_TIMEOUT_SECONDS = 60 * 150
+RUN_TIMEOUT_SECONDS = 60 * 20
 WEB_URL_TEMPLATE = 'https://us-west-2.console.aws.amazon.com/devicefarm/home#/projects/%s/runs/%s'
 
 
@@ -62,11 +62,8 @@ def schedule_run(project_arn, name, device_pool_arn, app_arn, test_package_arn):
         devicePoolArn=device_pool_arn,
         name=name,
         test={
-            'type': 'INSTRUMENTATION',
+            'type': 'APPIUM_PYTHON',
             'testPackageArn': test_package_arn,
-            'parameters':{
-            'video_recording': 'false', 'app_performance_monitoring': 'false'
-            } 
         }
     )
     run = result['run']
@@ -132,7 +129,7 @@ if __name__ == '__main__':
         project_arn,
         'ANDROID_APP',
         'Flipp-debug.apk',
-        'Documents/aws_apk/Flipp-debug.apk',
+        '/Documents/aws_apk/Flipp-debug.apk',
     )
     wait_for_upload(app_arn)
     logger.info('App: %s' % app_arn)
@@ -140,7 +137,7 @@ if __name__ == '__main__':
         project_arn,
         'INSTRUMENTATION_TEST_PACKAGE',
         'Flipp-debug-AndroidTest.apk',
-        'Documents/aws_apk/Flipp-debug-AndroidTest.apk',
+        '/Documents/aws_apk/Flipp-debug-AndroidTest.apk',
     )
     wait_for_upload(test_package_arn)
     logger.info('Test package: %s' % test_package_arn)
