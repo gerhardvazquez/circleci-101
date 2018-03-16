@@ -26,7 +26,7 @@ jobs:
             - tmp/aws/
   
   upload_to_AWS:
-    working_directory: ~/NotePad
+    working_directory: ~/flipp
     docker:
       - image: circleci/python:3.6.1
     steps:
