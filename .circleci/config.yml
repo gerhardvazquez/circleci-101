@@ -2,26 +2,22 @@ version: 2
 jobs:
   build:
     working_directory: ~/NotePad
-  docker:
-    - image: circleci/android:api-26-node8-alpha
-  steps:
-    - checkout
-    - run: git submodule sync
-    - run: git submodule update --init
-    - run:
-        name: Accept Licenses
-        command: echo y | sdkmanager --licenses && sdkmanager --update
-    - run: 
-        name: Download Dependencies
-        command: ./gradlew androidDependencies -PdisablePreDex
-    - run:
-        name: Create apks
-        command: ./gradlew clean assambleDebug assambleAndroidTest
-    - persist_to_workspace:
-      root: ~/NotePad
-      paths:
-        - NotePad/build/outputs/
-        
+    docker:
+      - image: circleci/android:api-26-node8-alpha
+    steps:
+      - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
+      - run:
+          name: Accept Licenses
+          command: echo y | sdkmanager --licenses && sdkmanager --update
+      - run: 
+          name: Download Dependencies
+          command: ./gradlew androidDependencies -PdisablePreDex
+      - run:
+          name: Create apks
+          command: ./gradlew clean assambleDebug assambleAndroidTest
+
 workflows:
   version: 2
   build_test_and_deploy:
