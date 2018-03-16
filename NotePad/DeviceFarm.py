@@ -128,7 +128,7 @@ if __name__ == '__main__':
     app_arn = create_upload(
         project_arn,
         'ANDROID_APP',
-        'Flipp-debug.apk',
+        'app-debug.apk',
         '/NotePad/app/build/outputs/apk/app-debug.apk',
     )
     wait_for_upload(app_arn)
@@ -136,7 +136,7 @@ if __name__ == '__main__':
     test_package_arn = create_upload(
         project_arn,
         'INSTRUMENTATION_TEST_PACKAGE',
-        'Flipp-debug-AndroidTest.apk',
+        'app-debug-test-unaligned.apk',
         '/NotePad/app/build/outputs/apk/app-debug-test-unaligned.apk',
     )
     wait_for_upload(test_package_arn)
