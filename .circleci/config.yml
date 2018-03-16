@@ -22,6 +22,9 @@ jobs:
       #    command: ./gradlew clean assambleDebug assambleAndroidTest
   
   upload_to_AWS:
+    machine:
+      python:
+        version: pypy-3.4.4
     steps:
       - run: pip install PIL --allow-external PIL --allow-unverified PIL
       
