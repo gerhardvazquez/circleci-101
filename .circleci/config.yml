@@ -25,9 +25,10 @@ jobs:
     working_directory: ~/NotePad
     docker:
       - image: circleci/python:3.6.1
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
     steps:
+      - run:
+          name: Install AWS CLI
+          command: sudo apt-get -y -qq install awscli
       - run: pip install --upgrade pip
       - run:
           command: python DeviceFarm.py
