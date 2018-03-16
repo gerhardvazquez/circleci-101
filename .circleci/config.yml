@@ -22,12 +22,12 @@ jobs:
       #    command: ./gradlew clean assambleDebug assambleAndroidTest
   
   upload_to_AWS:
+    working_directory: ~/NotePad
     docker:
       - image: circleci/python:3.6.1
     steps:
       - run: pip install --upgrade pip
       - run:
-          command: ls
           command: python DeviceFarm.py
       
 workflows:
