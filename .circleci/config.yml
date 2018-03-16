@@ -32,7 +32,8 @@ jobs:
       - run: pip install --upgrade pip
       - run:
           command: sudo pip install boto3
-          command: python ./NotePad/DeviceFarm.py
+          command: ls
+          #command: python ./NotePad/DeviceFarm.py
       
 workflows:
   version: 2
