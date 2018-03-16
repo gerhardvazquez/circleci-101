@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/NotePad
+    working_directory: ~/notePad
     docker:
       - image: circleci/android:api-26-node8-alpha
     steps:
@@ -21,17 +21,17 @@ jobs:
       #    name: Create apks
       #    command: ./gradlew clean assambleDebug assambleAndroidTest
       - persist_to_workspace:
-          root: ~/NotePad
+          root: ~/notePad
           paths:
             - NotePad/
   
   upload_to_AWS:
-    working_directory: ~/NotePad
+    working_directory: ~/notePad
     docker:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: ~/NotePad
+          at: ~/notePad
       - run:
           name: Install AWS CLI
           command: sudo apt-get -y -qq install awscli
