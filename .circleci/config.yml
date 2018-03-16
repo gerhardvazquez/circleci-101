@@ -38,13 +38,10 @@ jobs:
           command: sudo apt-get -y -qq install awscli
       - run: pip install --upgrade pip
       - run:
-          command: sudo pip install boto3
+          command: sudo pip install boto3 
       - run:
-          command: ls
-      - run:
-          command: cd tmp
-      - run:
-          command: ls
+          command: |
+          ls && cd tmp && ls && cd tmp
           #command: os.chmod(DeviceFarm.py, 0o444) 
           #command: python ./tmp/notePad/DeviceFarm.py
       
