@@ -1,8 +1,5 @@
 version: 2
 jobs:
-  dependencies:
-      pre:
-        - pip install PIL --allow-external PIL --allow-unverified PIL
   build:
     working_directory: ~/NotePad
     docker:
@@ -23,18 +20,17 @@ jobs:
       #- run:
       #    name: Create apks
       #    command: ./gradlew clean assambleDebug assambleAndroidTest
+  dependencies:
+    pre:
+      - pip install PIL --allow-external PIL --allow-unverified PIL
 
 workflows:
   version: 2
   build_test_and_deploy:
     jobs:
-      - dependencies:
-        filters:
-            tags:
-              #We want to run this on every tag
-              only: /.*/
       - build:
           filters:
             tags:
               #We want to run this on every tag
               only: /.*/
+      - dependencies
