@@ -23,15 +23,16 @@ jobs:
       - persist_to_workspace:
           root: ~/notePad
           paths:
-            - NotePad/
+            - NotePad/app/build/outputs/apk/
+            - NotePad/DeviceFarm.py
   
   upload_to_AWS:
-    working_directory: ~/notePad
+    working_directory: ~/notePad1
     docker:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: ~/tmp/notePad/
+          at: tmp/notePad/
       - run:
           name: Install AWS CLI
           command: sudo apt-get -y -qq install awscli
