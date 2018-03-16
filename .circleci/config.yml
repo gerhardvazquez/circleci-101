@@ -40,6 +40,10 @@ jobs:
           command: sudo pip install boto3
       - run:
            command: ls
+           command: cd tmp
+           command: ls
+           command: notePad
+           command: ls
           #command: os.chmod(DeviceFarm.py, 0o444) 
           #command: python ./tmp/notePad/DeviceFarm.py
       
