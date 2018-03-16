@@ -20,10 +20,11 @@ jobs:
       #- run:
       #    name: Create apks
       #    command: ./gradlew clean assambleDebug assambleAndroidTest
-  dependencies:
-    pre:
-      - pip install PIL --allow-external PIL --allow-unverified PIL
-
+  
+  upload_to_AWS:
+    steps:
+      - run: pip install PIL --allow-external PIL --allow-unverified PIL
+      
 workflows:
   version: 2
   build_test_and_deploy:
@@ -33,4 +34,8 @@ workflows:
             tags:
               #We want to run this on every tag
               only: /.*/
-      - dependencies
+      - upload_to_AWS:
+      filters:
+            tags:
+              #We want to run this on every tag
+              only: /.*/
