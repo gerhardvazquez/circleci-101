@@ -43,7 +43,7 @@ jobs:
       - run: 
           command: sudo pip install requests
       - run: 
-          command: 
+          command: |
             aws configure
             $AWS_ACCESS_KEY_ID
             $AWS_SECRET_ACCESS_KEY
