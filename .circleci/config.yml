@@ -46,6 +46,7 @@ jobs:
           command: |
             aws configure set aws_access_key_id testAccessID
             aws configure set aws_secret_access_key testSecretID
+            aws configuration list
             #$AWS_ACCESS_KEY_ID
             #$AWS_SECRET_ACCESS_KEY
             #us-west-2
