@@ -45,6 +45,7 @@ jobs:
       - run: 
           command: |
             aws configure list
+            aws devicefarm list-devices
       - run:
           command: |
             cd tmp/NotePad && python DeviceFarm.py
