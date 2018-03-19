@@ -42,9 +42,6 @@ jobs:
           command: sudo pip install boto3
       - run: 
           command: sudo pip install requests
-      - run: 
-          command: |
-            aws devicefarm list-devices
       - run:
           command: |
             cd tmp/NotePad && python DeviceFarm.py
