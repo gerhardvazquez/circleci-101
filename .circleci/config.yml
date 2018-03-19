@@ -44,7 +44,6 @@ jobs:
           command: sudo pip install requests
       - run: 
           command: |
-            #aws configure list
             aws devicefarm list-devices
       - run:
           command: |
