@@ -62,9 +62,11 @@ def schedule_run(project_arn, name, device_pool_arn, app_arn, test_package_arn):
         devicePoolArn=device_pool_arn,
         name=name,
         test={
-            'type': 'APPIUM_PYTHON',
+            'type': 'INSTRUMENTATION',
             'testPackageArn': test_package_arn,
-        }
+            'parameters':{
+            'video_recording': 'false', 'app_performance_monitoring': 'false'
+            }
     )
     run = result['run']
     return run['arn']
