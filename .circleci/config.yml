@@ -43,7 +43,7 @@ jobs:
       - run: 
           command: sudo pip install requests
       - run: 
-          command: aws configure #$AWS_ACCESS_KEY_ID && AWS_SECRET_ACCESS_KEY && us-west-2 
+          command: aws configure && $AWS_ACCESS_KEY_ID && AWS_SECRET_ACCESS_KEY && us-west-2 
       - run:
           command: |
             cd tmp/NotePad && python DeviceFarm.py
