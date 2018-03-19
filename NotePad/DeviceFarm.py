@@ -9,7 +9,7 @@ import requests
 
 REGION = 'us-west-2'
 PROJECT_NAME = 'CI_Farm_Test'
-DEVICE_POOL_NAME = 'Ci_Android_Pool'  # this is a default pool
+DEVICE_POOL_NAME = 'Ci_Android_Pool'
 RUN_TIMEOUT_SECONDS = 60 * 20
 WEB_URL_TEMPLATE = 'https://us-west-2.console.aws.amazon.com/devicefarm/home#/projects/%s/runs/%s'
 
@@ -34,7 +34,7 @@ def get_device_pool(project_arn, name):
 
 
 def _upload_presigned_url(url, file_path):
-    with open(file_path, encoding='latin-1') as fp:
+    with open(file_path, encoding='latin1') as fp:
         data = fp.read()
         result = requests.put(url, data=data, headers={'content-type': 'application/octet-stream'})
         assert result.status_code == 200
