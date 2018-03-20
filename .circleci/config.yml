@@ -43,10 +43,10 @@ jobs:
       - run: 
           command: sudo pip install requests
       - run:
-        command: |
-          aws configure set aws_access_key_id $AWS_DEVICEFARM_ACCESSKEY
-          aws configure set aws_secret_access_key $AWS_DEVICEFARM_SECRETEKEY
-          aws configure list
+          command: |
+            aws configure set aws_access_key_id $AWS_DEVICEFARM_ACCESSKEY
+            aws configure set aws_secret_access_key $AWS_DEVICEFARM_SECRETEKEY
+            aws configure list
         - run:
             command: |
       - run:
