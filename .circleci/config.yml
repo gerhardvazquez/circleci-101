@@ -23,7 +23,7 @@ jobs:
           root: ~/notePad
           paths:
             - NotePad/app/build/outputs/apk/
-            - NotePad/DeviceFarm.py
+            - .circleci/DeviceFarm.py
   
   upload_to_AWS:
     working_directory: ~/notePad1
