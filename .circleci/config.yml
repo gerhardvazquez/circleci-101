@@ -19,7 +19,6 @@ jobs:
       #    command: ./gradlew androidDependencies -PdisablePreDex
       #- run:
       #    name: Create apks
-      #    command: ./gradlew clean assambleDebug assambleAndroidTest
       - persist_to_workspace:
           root: ~/notePad
           paths:
