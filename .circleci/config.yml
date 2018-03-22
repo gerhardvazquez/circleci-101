@@ -44,14 +44,10 @@ jobs:
       - run:
           command: |
             aws configure list
-            aws configure set aws_access_key_id $TEST_KEY
-            aws configure set aws_secret_access_key $SECRET_TEST
+            aws configure set aws_access_key_id $AWS_KEY
+            aws configure set aws_secret_access_key $AWS_SECRET_KEY
             aws configure list
-      - run:
-          command: |
             cd tmp/NotePad && python DeviceFarm.py
-          #command: os.chmod(DeviceFarm.py, 0o444) 
-          #command: python ./tmp/notePad/DeviceFarm.py
       
 workflows:
   version: 2
