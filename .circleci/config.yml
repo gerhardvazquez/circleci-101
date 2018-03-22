@@ -44,8 +44,8 @@ jobs:
       - run:
           command: |
             aws configure list
-            aws configure set aws_access_key_id $AWS_KEY
-            aws configure set aws_secret_access_key $AWS_SECRETE_KEY
+            aws configure set aws_access_key_id $TEST_KEY
+            aws configure set aws_secret_access_key $SECRET_TEST
             aws configure list
       - run:
           command: |
