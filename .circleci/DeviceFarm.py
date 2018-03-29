@@ -11,7 +11,7 @@ REGION = 'us-west-2'
 PROJECT_NAME = 'CI_Farm_Test'
 DEVICE_POOL_NAME = 'Ci_Android_Pool'
 RUN_TIMEOUT_SECONDS = 60 * 20
-print 'sys.argv[0] =', sys.argv[0]
+print (sys.argv[0] = sys.argv[0])
 WEB_URL_TEMPLATE = 'https://us-west-2.console.aws.amazon.com/devicefarm/home#/projects/%s/runs/%s'
 
 
