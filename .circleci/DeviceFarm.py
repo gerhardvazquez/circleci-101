@@ -2,7 +2,7 @@
 import logging
 import pprint
 import time
-
+import os
 import boto3
 import requests
 
@@ -11,6 +11,7 @@ REGION = 'us-west-2'
 PROJECT_NAME = 'CI_Farm_Test'
 DEVICE_POOL_NAME = 'Ci_Android_Pool'
 RUN_TIMEOUT_SECONDS = 60 * 20
+print 'sys.argv[0] =', sys.argv[0]
 WEB_URL_TEMPLATE = 'https://us-west-2.console.aws.amazon.com/devicefarm/home#/projects/%s/runs/%s'
 
 
@@ -132,7 +133,7 @@ if __name__ == '__main__':
         project_arn,
         'ANDROID_APP',
         'app-debug.apk',
-        '~/NotePad/app/build/outputs/apk/app-debug.apk',
+        'NotePad/app/build/outputs/apk/app-debug.apk',
     )
     wait_for_upload(app_arn)
     logger.info('App: %s' % app_arn)
@@ -140,7 +141,7 @@ if __name__ == '__main__':
         project_arn,
         'INSTRUMENTATION_TEST_PACKAGE',
         'app-debug-test-unaligned.apk',
-        '~/NotePad/app/build/outputs/apk/app-debug-test-unaligned.apk',
+        'NotePad/app/build/outputs/apk/app-debug-test-unaligned.apk',
     )
     wait_for_upload(test_package_arn)
     logger.info('Test package: %s' % test_package_arn)
