@@ -12,8 +12,8 @@ PROJECT_NAME = 'CI_Farm_Test'
 DEVICE_POOL_NAME = 'Ci_Android_Pool'
 RUN_TIMEOUT_SECONDS = 60 * 20
 WEB_URL_TEMPLATE = 'https://us-west-2.console.aws.amazon.com/devicefarm/home#/projects/%s/runs/%s'
-print os.path.abspath(".")
-print os.path.abspath("..")
+os.getcwd()
+os.path.exists('NotePad/app/build/outputs/apk/app-debug.apk')
 
 device_farm = boto3.client('devicefarm', region_name=REGION)
 s3 = boto3.client('s3', region_name=REGION)
@@ -35,7 +35,7 @@ def get_device_pool(project_arn, name):
 
 
 def _upload_presigned_url(url, file_path):
-    with open(file_path, encoding='latin1') as fp:
+    with open(os.path.expanduser(file_path, encoding='latin1')) as fp:
         data = fp.read()
         result = requests.put(url, data=data, headers={'content-type': 'application/octet-stream'})
         assert result.status_code == 200
@@ -133,7 +133,7 @@ if __name__ == '__main__':
         project_arn,
         'ANDROID_APP',
         'app-debug.apk',
-        'NotePad/app/build/outputs/apk/app-debug.apk',
+        '~/NotePad/app/build/outputs/apk/app-debug.apk',
     )
     wait_for_upload(app_arn)
     logger.info('App: %s' % app_arn)
@@ -141,7 +141,7 @@ if __name__ == '__main__':
         project_arn,
         'INSTRUMENTATION_TEST_PACKAGE',
         'app-debug-test-unaligned.apk',
-        'NotePad/app/build/outputs/apk/app-debug-test-unaligned.apk',
+        '~/NotePad/app/build/outputs/apk/app-debug-test-unaligned.apk',
     )
     wait_for_upload(test_package_arn)
     logger.info('Test package: %s' % test_package_arn)
@@ -154,5 +154,5 @@ if __name__ == '__main__':
     )
     logger.info('Scheduled test run %r' % test_run_arn)
     logger.info('View scheduled run at %s' % get_run_web_url(project_arn, test_run_arn))
-    success = wait_for_run(test_run_arn)
+    #success = wait_for_run(test_run_arn)
     logger.info('Success')
