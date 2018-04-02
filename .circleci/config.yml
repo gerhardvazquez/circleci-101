@@ -51,7 +51,7 @@ jobs:
             aws configure list
             #cd home/NotePad
             ls
-            cd home
+            cd NotePad
             ls
             #cd home/.circleci && python DeviceFarm.py
       
