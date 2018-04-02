@@ -31,7 +31,7 @@ jobs:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: tmp/workspace/
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli --upgrade
@@ -51,7 +51,7 @@ jobs:
             aws configure list
             #ls
             ls
-            cd tmp/.circleci && python DeviceFarm.py
+            cd tmp/workspace/.circleci && python DeviceFarm.py
       
 workflows:
   version: 2
