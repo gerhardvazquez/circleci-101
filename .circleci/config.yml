@@ -50,8 +50,9 @@ jobs:
             #aws configure set aws_secret_access_key $AWS_SECRETE_KEY
             aws configure list
             ls
-            cd home/circleci/Notepad
-            cd home/circleci/.circleci && python DeviceFarm.py
+            cd home/circleci
+            ls
+            #cd home/circleci/.circleci && python DeviceFarm.py
       
 workflows:
   version: 2
