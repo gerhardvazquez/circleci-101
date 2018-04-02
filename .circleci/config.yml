@@ -52,7 +52,7 @@ jobs:
             ls
             cd home
             ls
-            cd circlesi
+            cd circleci
             ls
             cd home/.circleci && python DeviceFarm.py
       
