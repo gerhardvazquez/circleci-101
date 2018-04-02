@@ -52,6 +52,8 @@ jobs:
             ls
             cd home
             ls
+            cd circlesi
+            ls
             cd home/.circleci && python DeviceFarm.py
       
 workflows:
