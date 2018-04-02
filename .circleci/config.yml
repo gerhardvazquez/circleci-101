@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/flipp
+    working_directory: ~/notePad
     docker:
       - image: circleci/android:api-26-node8-alpha
     steps:
@@ -20,24 +20,24 @@ jobs:
       #- run:
       #    name: Create apks
       - persist_to_workspace:
-          root: ~/flipp
+          root: ~/notePad
           paths:
             - NotePad/app/build/outputs/apk/
             - .circleci/DeviceFarm.py
   
   upload_to_AWS:
-    working_directory: ~/flipp
+    working_directory: ~/notePad
     docker:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: flipp/workspace/
+          at: tmp/
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli --upgrade
       - run: 
           command: sudo pip install --upgrade pip
-      - run:
+      - run: 
           command: sudo pip install boto3
       - run: 
           command: sudo pip install requests
@@ -49,10 +49,8 @@ jobs:
             #aws configure set aws_access_key_id $AWS_KEY
             #aws configure set aws_secret_access_key $AWS_SECRETE_KEY
             aws configure list
-            #cd home/NotePad
-            #cd flipp/workspace
-            #ls
-            cd flipp/.circleci && python DeviceFarm.py
+            ls
+            cd tmp/.circleci && python DeviceFarm.py
       
 workflows:
   version: 2
