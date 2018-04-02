@@ -31,7 +31,7 @@ jobs:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: home/
+          at: .
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli --upgrade
