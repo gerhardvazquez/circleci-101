@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/home/circleci
+    working_directory: ~/home
     docker:
       - image: circleci/android:api-26-node8-alpha
     steps:
@@ -20,18 +20,18 @@ jobs:
       #- run:
       #    name: Create apks
       - persist_to_workspace:
-          root: ~/home/circleci
+          root: ~/home
           paths:
             - NotePad/app/build/outputs/apk/
             - .circleci/DeviceFarm.py
   
   upload_to_AWS:
-    working_directory: ~/home/circleci
+    working_directory: ~/home
     docker:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: home/circleci
+          at: home/
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli --upgrade
@@ -49,9 +49,9 @@ jobs:
             #aws configure set aws_access_key_id $AWS_KEY
             #aws configure set aws_secret_access_key $AWS_SECRETE_KEY
             aws configure list
-            #cd home/circleci/NotePad
+            #cd home/NotePad
             ls
-            cd home/circleci/.circleci && python DeviceFarm.py
+            cd home/.circleci && python DeviceFarm.py
       
 workflows:
   version: 2
