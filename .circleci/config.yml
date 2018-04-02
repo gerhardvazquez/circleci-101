@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/home
+    working_directory: ~/flipp
     docker:
       - image: circleci/android:api-26-node8-alpha
     steps:
@@ -20,18 +20,18 @@ jobs:
       #- run:
       #    name: Create apks
       - persist_to_workspace:
-          root: ~/home
+          root: ~/flipp
           paths:
             - NotePad/app/build/outputs/apk/
             - .circleci/DeviceFarm.py
   
   upload_to_AWS:
-    working_directory: ~/home
+    working_directory: ~/flipp
     docker:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: ~/home
+          at: ~/flipp
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli --upgrade
@@ -51,7 +51,7 @@ jobs:
             aws configure list
             #cd home/NotePad
             ls
-            cd NotePad
+            cd flipp
             ls
             #cd home/.circleci && python DeviceFarm.py
       
