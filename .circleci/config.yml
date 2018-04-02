@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/notePad
+    working_directory: ~/home/circleci
     docker:
       - image: circleci/android:api-26-node8-alpha
     steps:
@@ -20,24 +20,24 @@ jobs:
       #- run:
       #    name: Create apks
       - persist_to_workspace:
-          root: ~/notePad
+          root: ~/home/circleci
           paths:
             - NotePad/app/build/outputs/apk/
             - .circleci/DeviceFarm.py
   
   upload_to_AWS:
-    working_directory: ~/notePad
+    working_directory: ~/home/circleci
     docker:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: tmp/
+          at: home/circleci
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli --upgrade
       - run: 
           command: sudo pip install --upgrade pip
-      - run: 
+      - run:
           command: sudo pip install boto3
       - run: 
           command: sudo pip install requests
