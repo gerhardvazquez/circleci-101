@@ -20,18 +20,18 @@ jobs:
       #- run:
       #    name: Create apks
       - persist_to_workspace:
-          root: ~/tmp
+          root: .
           paths:
             - NotePad/app/build/outputs/apk/
             - .circleci/DeviceFarm.py
   
   upload_to_AWS:
-    working_directory: ~/notePad
+    working_directory: ~/tmp
     docker:
       - image: circleci/python:3.6.1
     steps:
       - attach_workspace:
-          at: tmp/workspace/
+          at: ~/tmp
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli --upgrade
