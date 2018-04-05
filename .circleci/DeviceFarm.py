@@ -154,5 +154,5 @@ if __name__ == '__main__':
     )
     logger.info('Scheduled test run %r' % test_run_arn)
     logger.info('View scheduled run at %s' % get_run_web_url(project_arn, test_run_arn))
-    #success = wait_for_run(test_run_arn)
+    success = wait_for_run(test_run_arn)
     logger.info('Success')
