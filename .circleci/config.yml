@@ -20,7 +20,7 @@ jobs:
       #- run:
       #    name: Create apks
       - persist_to_workspace:
-          root: /root/tmp
+          root: /home/circleci/tmp
           paths:
             - NotePad/app/build/outputs/apk/
             - .circleci/DeviceFarm.py
