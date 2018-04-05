@@ -74,8 +74,8 @@ def schedule_run(project_arn, name, device_pool_arn, app_arn, test_package_arn):
     return run['arn']
 
 
-def _poll_until(method, arn, get_status_callable, success_statuses, timeout_seconds=10):
-    check_every_seconds = 60 if timeout_seconds == RUN_TIMEOUT_SECONDS else 1
+def _poll_until(method, arn, get_status_callable, success_statuses, timeout_seconds=60):
+    check_every_seconds = 10 if timeout_seconds == RUN_TIMEOUT_SECONDS else 1
     start = time.time()
     while True:
         result = method(arn=arn)
