@@ -34,14 +34,14 @@ jobs:
           at: ~/flipp
       - run:
           name: Upgrade PIP
-          command: pip install --upgrade pip
+          command: sudo pip install --upgrade pip
       - run:
           name: Install AWS CLI
-          command: pip install awscli --upgrade
+          command: sudo pip install awscli --upgrade
       - run: 
-          command: pip install boto3 --upgrade
+          command: sudo pip install boto3 --upgrade
       - run: 
-          command: pip install requests --upgrade
+          command: sudo pip install requests --upgrade
       - run:
           command: |
             aws configure list
