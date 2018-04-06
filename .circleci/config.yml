@@ -34,7 +34,7 @@ jobs:
           at: ~/flipp
       - run:
           name: Upgrade PIP
-          command: sudo pip --upgrade
+          command: sudo pip install --upgrade
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli --upgrade
