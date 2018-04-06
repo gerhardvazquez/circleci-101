@@ -28,7 +28,7 @@ jobs:
   upload_to_AWS:
     working_directory: ~/flipp
     docker:
-      - image: circleci/python:3.6.1
+      - image: circleci/python:2.7.11
     steps:
       - attach_workspace:
           at: ~/flipp
@@ -37,13 +37,13 @@ jobs:
           command: sudo pip install --upgrade
       - run:
           name: Install AWS CLI
-          command: sudo pip install awscli --upgrade
+          command: pip install awscli --upgrade
       - run: 
-          command: sudo pip install --upgrade pip
+          command: pip install --upgrade pip
       - run: 
-          command: sudo pip install boto3 --upgrade
+          command: pip install boto3 --upgrade
       - run: 
-          command: sudo pip install requests --upgrade
+          command: pip install requests --upgrade
       - run:
           command: |
             aws configure list
