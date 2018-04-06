@@ -133,7 +133,7 @@ if __name__ == '__main__':
         project_arn,
         'ANDROID_APP',
         'app-debug.apk',
-        '$HOME/tmp/NotePad/app/build/outputs/apk/app-debug.apk',
+        '~/tmp/NotePad/app/build/outputs/apk/app-debug.apk',
     )
     wait_for_upload(app_arn)
     logger.info('App: %s' % app_arn)
@@ -141,7 +141,7 @@ if __name__ == '__main__':
         project_arn,
         'INSTRUMENTATION_TEST_PACKAGE',
         'app-debug-test-unaligned.apk',
-        '$HOME/tmp/NotePad/app/build/outputs/apk/app-debug.apk',
+        '~/tmp/NotePad/app/build/outputs/apk/app-debug.apk',
     )
     wait_for_upload(test_package_arn)
     logger.info('Test package: %s' % test_package_arn)
