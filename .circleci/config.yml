@@ -54,7 +54,7 @@ jobs:
             aws configure list
             #ls
             ls
-            cd .circleci && python3 DeviceFarm.py
+            cd .circleci && sudo python DeviceFarm.py
       
 workflows:
   version: 2
