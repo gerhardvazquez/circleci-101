@@ -23,7 +23,7 @@ jobs:
           root: /home/circleci/flipp
           paths:
             - NotePad/app/build/outputs/apk/
-            - .circleci/DeviceFarm.py
+            - .circleci/
   
   upload_to_AWS:
     working_directory: ~/flipp
