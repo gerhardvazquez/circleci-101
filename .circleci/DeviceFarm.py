@@ -43,7 +43,7 @@ def _upload_presigned_url(url, file_path):
 
 def create_upload(project_arn, upload_type, name, file_path):
     # name needs to be a file name like app-releaseProduction.apk, not "Android App"
-    logger.info('testing values' % (project_arn, upload_type, name, file_path))
+    logger.info('testing values %s %r' % (project_arn, upload_type, name, file_path))
     logger.info('Uploading %s %r' % (upload_type, file_path))
     result = device_farm.create_upload(
         projectArn=project_arn,
