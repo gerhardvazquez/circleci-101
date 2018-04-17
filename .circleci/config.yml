@@ -28,7 +28,7 @@ jobs:
   upload_to_AWS:
     working_directory: ~/flipp
     docker:
-      - image: circleci/python:3.6.1
+      - image: circleci/python:2-browsers
     steps:
       - attach_workspace:
           at: ~/flipp
