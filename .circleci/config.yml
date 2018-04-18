@@ -69,17 +69,13 @@ jobs:
           name: Install crcmod
           command: sudo pip install -U crcmod
       - run:
-          command: |
+          command: |         
             echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
-            sudo chmod -R 0777 /opt
-            sudo apt-get install google-cloud-sdk-datastore-emulator
-            #sudo /opt/google-cloud-sdk/bin/gcloud config set project flipp-automation-suites
-            #sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
-            #sudo /opt/google-cloud-sdk/bin/gcloud --quiet components install beta
-            sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account FireFlippService --key-file ${HOME}/client-secret.json
+            sudo gcloud config set project flipp-automation-suites
+            sudo gcloud --quiet components update
+            sudo gcloud --quiet components install beta
+            sudo gcloud auth activate-service-account FireFlippService --key-file ${HOME}/client-secret.json
       - run:
-          command:
-            sudo pip install -U crcmod
           name: Running Tests in Firebase
           command: |
             echo "Test to Firebase" | sudo /opt/google-cloud-sdk/bin/gcloud beta firebase test android \
