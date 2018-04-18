@@ -78,6 +78,8 @@ jobs:
             #sudo /opt/google-cloud-sdk/bin/gcloud --quiet components install beta
             sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account FireFlippService --key-file ${HOME}/client-secret.json
       - run:
+          command:
+            sudo pip install -U crcmod
           name: Running Tests in Firebase
           command: |
             echo "Test to Firebase" | sudo /opt/google-cloud-sdk/bin/gcloud beta firebase test android \
