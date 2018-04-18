@@ -103,9 +103,4 @@ workflows:
             tags:
               #We want to run this on every tag
               only: /.*/
-      - firebase_upload:
-          requires:
-            - build
-          filters:
-            tags:
-              only: /.*/
+      
