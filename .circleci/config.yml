@@ -75,7 +75,6 @@ jobs:
             sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
             sudo /opt/google-cloud-sdk/bin/gcloud --quiet components install beta
             sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account FireFlippService --key-file ${HOME}/client-secret.json
-
       - run:
           name: Running Tests in Firebase
           command: |
@@ -107,4 +106,4 @@ workflows:
             - build
           filters:
             tags:
-              only: /*/
+              only: /.*/
