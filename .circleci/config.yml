@@ -70,8 +70,6 @@ jobs:
           command: sudo pip install -U crcmod
       - run:
           command: |
-       # - ./gradlew :app:assembleDebug -PdisablePreDex
-       # - ./gradlew :app:assembleDebugTest -PdisablePreDex
             echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
             sudo /opt/google-cloud-sdk/bin/gcloud config set project flipp-automation-suites
             sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
