@@ -76,14 +76,15 @@ jobs:
             sudo /opt/google-cloud-sdk/bin/gcloud --quiet components install beta
             sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account FireFlippService --key-file ${HOME}/client-secret.json
 
-  test:
-    override:
-      - echo "Test to Firebase" | sudo /opt/google-cloud-sdk/bin/gcloud beta firebase test android \
-       run --type instrumentation \
-       --app Flipp/build/outputs/apk/debug/Flipp-debug.apk \
-       --test Flipp/build/outputs/apk/androidTest/debug/Flipp-debug-androidTest.apk \
-       --device model=Nexus6,version=21,locale=en \
-       --results-bucket cloud-test-flipp-automation-suites
+      - run:
+          name: Running Tests in Firebase
+          command: |
+            echo "Test to Firebase" | sudo /opt/google-cloud-sdk/bin/gcloud beta firebase test android \
+            run --type instrumentation \
+            --app Flipp/build/outputs/apk/debug/Flipp-debug.apk \
+            --test Flipp/build/outputs/apk/androidTest/debug/Flipp-debug-androidTest.apk \
+            --device model=Nexus6,version=21,locale=en \
+            --results-bucket cloud-test-flipp-automation-suites
       
 workflows:
   version: 2
@@ -101,3 +102,9 @@ workflows:
             tags:
               #We want to run this on every tag
               only: /.*/
+      - firebase_upload:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /*/
