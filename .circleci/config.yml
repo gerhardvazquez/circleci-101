@@ -71,6 +71,8 @@ jobs:
       - run:
           command: |
             echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
+            sudo chmod -R 0777 /opt
+            echo Y | gcloud components install cloud-datastore-emulator
             sudo /opt/google-cloud-sdk/bin/gcloud config set project flipp-automation-suites
             sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
             sudo /opt/google-cloud-sdk/bin/gcloud --quiet components install beta
