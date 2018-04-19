@@ -72,7 +72,8 @@ jobs:
           command: |         
             echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
             sudo gcloud config set project flipp-automation-suites
-            sudo gcloud -q apt-get update
+            sudo gcloud --quiet components update app
+            #sudo gcloud -q apt-get update
             sudo gcloud -q apt-get install google-cloud-sdk
             sudo gcloud auth login FireFlippService
       - run:
