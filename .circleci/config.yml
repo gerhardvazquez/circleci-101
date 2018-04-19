@@ -74,6 +74,7 @@ jobs:
             sudo gcloud config set project flipp-automation-suites
             sudo apt-get install google-cloud-sdk
             sudo apt-get update
+            sudo gcloud components update
             sudo gcloud components list
             sudo gcloud auth login FireFlippService
       - run:
