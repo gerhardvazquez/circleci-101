@@ -69,15 +69,24 @@ jobs:
           name: Install crcmod
           command: sudo pip install -U crcmod
       - run:
+          name: Install AWS CLI
+          command: sudo apt-get -y -qq install awscli
+      - run:
+          name: Download S3 Files
           command: |
-            echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
-            #sudo gcloud config set project flipp-automation-suites
-            sudo gcloud config set project test-fireflipp-com
+            mkdir s3
+            aws configure set s3.signature_version s3v4
+            aws s3 cp s3://android_ci/service_account.json s3 --region us-east-1
+      - run:
+          command: |
+            #echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
+            sudo gcloud config set project flipp-automation-suites
+            #sudo gcloud config set project test-fireflipp-com
             sudo apt-get update
             sudo apt-get install google-cloud-sdk
             sudo gcloud components list
             #sudo gcloud auth login FireFlippService
-            sudo gcloud auth activate-service-account --key-file ${HOME}/client-secret.json
+            sudo gcloud auth activate-service-account --key-file ${HOME}/service_account.json
       - run:
           name: Running Tests in Firebase
           command: |
