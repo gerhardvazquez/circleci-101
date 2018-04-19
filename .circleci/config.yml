@@ -72,7 +72,7 @@ jobs:
           command: |         
             echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
             sudo gcloud config set project flipp-automation-suites
-            sudo gcloud components update
+            sudo apt-get update 
             sudo gcloud components list
             #sudo gcloud --quiet components update app
             #sudo gcloud -q apt-get update
