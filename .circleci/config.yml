@@ -80,7 +80,7 @@ jobs:
       - run:
           name: Running Tests in Firebase
           command: |
-            echo "Test to Firebase" | sudo /opt/google-cloud-sdk/bin/gcloud beta firebase test android \
+            echo "Test to Firebase" | sudo gcloud beta firebase test android \
             run --type instrumentation \
             --app Flipp/build/outputs/apk/debug/Flipp-debug.apk \
             --test Flipp/build/outputs/apk/androidTest/debug/Flipp-debug-androidTest.apk \
