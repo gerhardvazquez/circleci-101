@@ -73,9 +73,8 @@ jobs:
             echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
             sudo gcloud config set project flipp-automation-suites
             sudo apt-get install google-cloud-sdk
-            sudo apt-get update
-            sudo gcloud components update
             sudo gcloud components list
+            sudo apt-get update
             sudo gcloud auth login FireFlippService
       - run:
           name: Running Tests in Firebase
