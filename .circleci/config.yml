@@ -76,7 +76,7 @@ jobs:
             sudo apt-get install google-cloud-sdk
             sudo gcloud components list
             #sudo gcloud auth login FireFlippService
-            sudo gcloud auth activate-service-account FireFlippService --key-file ${HOME}/client-secret.json
+            sudo gcloud auth activate-service-account --key-file ${HOME}/client-secret.json
       - run:
           name: Running Tests in Firebase
           command: |
